@@ -230,12 +230,13 @@ bool Minesweeper::initGame(){
 void Minesweeper::waitPlayer(SDL_Event* event){
   while ((isPlayerWinner() || gameOver) && !done){
     checkEvents(event);
-    nanosleep(&(struct timespec){0,NANOSEC},NULL);
+    struct timespec timespec_st = {0,NANOSEC};
+    nanosleep(&timespec_st,NULL);
   }
 }
 
 void Minesweeper::checkCheat(){
-  if (cheat.str().find("show") != -1){
+  if (((int) cheat.str().find("show")) != -1){
     cheatActived = true;
     showMines();
     cheat.str(string());
@@ -256,7 +257,8 @@ void Minesweeper::startGame(){
       waitPlayer(&event);
     }
     checkCheat();
-    nanosleep(&(struct timespec){0,NANOSEC},NULL); 
+    struct timespec timespec_st = {0,NANOSEC};
+    nanosleep(&timespec_st,NULL); 
     //used to not consume 100% of the cpu 0,1s
   }
   timer.join();
@@ -363,8 +365,15 @@ void Minesweeper::renderTimerText(){
       SDL_Flip(displayVideo);
       mtx.unlock();
     }
-    if (initTime) nanosleep(&(struct timespec){1,0},NULL);
-    else nanosleep(&(struct timespec){0,NANOSEC},NULL);
+    struct timespec timespec_st;
+    if (initTime) {
+      timespec_st = {1,0};
+      nanosleep(&timespec_st,NULL);
+    }
+    else {
+      timespec_st = {0,NANOSEC};
+      nanosleep(&timespec_st,NULL);
+    }
   }
 }
 

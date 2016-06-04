@@ -29,7 +29,7 @@ using namespace std;
 #define BLANK 0
 #define OFFSET 30 //px
 #define NANOSEC 100000000
-SDL_Color textColor = {255,255,255};
+SDL_Color textColor = {255,255,255,0};
 
 typedef list<vector<Uint32>> listVector;
 
