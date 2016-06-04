@@ -20,9 +20,9 @@
 //#undef main
 using namespace std;
 
-#define PATH "/home/john/Programming/SDLGame/minesweeper"
-#define IMAGE_PATH "/home/john/Programming/SDLGame/minesweeper/images.png"
-#define FONT_PATH "/usr/share/fonts/truetype/msttcorefonts/arial.ttf"
+#define PATH "./"
+#define IMAGE_PATH "minesImg/images.png"
+#define FONT_PATH "fonts/arial.ttf"
 #define BOMB 9
 #define WIDTH 30
 #define HEIGHT 30
